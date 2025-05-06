@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TokenizeX - Plataforma de Tokenização</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">TokenizeX</a>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="tokenizacao.html">Tokenização</a>
+        <a href="negociacao.html">Marketplace</a>
+        <a href="produtor.html">Dashboard</a>
+        <button id="connectButton">Conectar Carteira</button>
+        <button id="disconnectButton" style="display:none;">Desconectar</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Tokenize seus ativos reais com segurança e transparência</h1>
+      <p>Conecte sua carteira, cadastre seus ativos e entre no mercado de ativos digitais.</p>
+      <a href="tokenizacao.html" class="cta-button">Começar Agora</a>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <div class="container">
+      <h2>Como Funciona</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1. Conecte sua carteira</h3>
+          <p>Utilize a MetaMask para autenticar e interagir com a plataforma.</p>
+        </div>
+        <div class="step">
+          <h3>2. Tokenize seu produto</h3>
+          <p>Cadastre nome, peso, valor e tipo do ativo. Tudo é registrado on-chain.</p>
+        </div>
+        <div class="step">
+          <h3>3. Negocie no marketplace</h3>
+          <p>Outros usuários podem comprar seus tokens de forma direta e segura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="container">
+      <h2>Vantagens</h2>
+      <ul>
+        <li>✅ Totalmente descentralizado</li>
+        <li>✅ Segurança e transparência via blockchain</li>
+        <li>✅ Custos baixos e sem intermediários</li>
+        <li>✅ Pagamentos em ETH com conversão automática de valores</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="tech">
+    <div class="container">
+      <h2>Tecnologia</h2>
+      <p>Usamos Ethereum (testnet Sepolia), MetaMask, contratos ERC-1155 para tokenização, e contratos inteligentes escritos em Solidity.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 TokenizeX — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

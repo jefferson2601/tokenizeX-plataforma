@@ -1,0 +1,24 @@
+{
+    "name": "tokenizex1155",
+    "version": "1.0.0",
+    "description": "Sistema de tokenização de ativos agrícolas usando ERC1155",
+    "main": "index.js",
+    "scripts": {
+      "test": "forge test",
+      "build": "forge build",
+      "deploy:sepolia": "forge script script/TokenizeX1155.s.sol:DeployTokenizeX1155 --rpc-url sepolia --broadcast --verify -vvvv",
+      "verify:sepolia": "forge verify-contract --chain-id 11155111 --watch --compiler-version 0.8.19 ADDRESS TokenizeX1155"
+    },
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+      "@nomiclabs/hardhat-ethers": "^2.2.3",
+      "@nomiclabs/hardhat-waffle": "^2.0.6",
+      "chai": "^4.3.7",
+      "ethers": "^5.7.2",
+      "hardhat": "^2.17.0"
+    },
+    "dependencies": {
+      "@openzeppelin/contracts": "^5.0.0"
+    }
+  }

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard do Produtor - TokenizeX</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">TokenizeX</a>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="tokenizacao.html">Tokenizar</a>
+        <a href="negociacao.html">Marketplace</a>
+        <a href="produtor.html">Dashboard</a>
+        <button id="connectButton">Conectar Carteira</button>
+        <button id="disconnectButton" style="display:none;">Desconectar</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Dashboard do Produtor</h1>
+  
+    <!-- Mensagem de carregamento -->
+    <div id="loadingMessage" class="loading-message">Carregando dados, por favor aguarde...</div>
+    
+    <div id="dashboardContent" style="display:none;">
+      <section class="dashboard-section">
+        <h2>Saldo Disponível</h2>
+        <div id="saldoInfo" class="saldo-box">
+          <p><strong>Saldo Disponível para Saque:</strong> <span id="saldoValor">Carregando...</span></p>
+          <button id="sacarButton" disabled>Sacar ETH</button>
+        </div>
+      </section>
+      
+      <section class="dashboard-section">
+        <h2>Seus Ativos Tokenizados</h2>
+        <div id="meusAtivos" class="meus-ativos">
+          <p>Carregando seus ativos...</p>
+        </div>
+      </section>
+      
+      <section class="dashboard-section">
+        <h2>Histórico de Vendas</h2>
+        <div id="historicoVendas" class="historico">
+          <ul id="listaVendas">
+            <li>Carregando histórico...</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 TokenizeX — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loadingMessage = document.getElementById('loadingMessage');
+      const dashboardContent = document.getElementById('dashboardContent');
+      
+      // Verificar se a carteira está conectada
+      async function checkWalletAndLoadDashboard() {
+        if (typeof window.ethereum !== 'undefined') {
+          // Verificar se há algum endereço selecionado
+          const accounts = await ethereum.request({ method: 'eth_accounts' });
+          
+          if (accounts && accounts.length > 0) {
+            // Carteira conectada
+            if (loadingMessage) loadingMessage.style.display = 'block';
+            dashboardContent.style.display = 'block';
+            
+            // Carregar dados do dashboard
+            if (typeof verificarSaldo === 'function') {
+              await verificarSaldo();
+            }
+            
+            if (typeof carregarHistoricoVendas === 'function') {
+              await carregarHistoricoVendas();
+            }
+            
+            if (typeof carregarMeusAtivos === 'function') {
+              await carregarMeusAtivos();
+            }
+            
+            if (loadingMessage) loadingMessage.style.display = 'none';
+          } else {
+            // Carteira não conectada
+            if (loadingMessage) loadingMessage.style.display = 'none';
+            dashboardContent.style.display = 'block';
+            
+            // Mostrar mensagens indicando que precisa conectar
+            document.getElementById('saldoValor').textContent = "Conecte sua carteira para ver seu saldo";
+            document.getElementById('meusAtivos').innerHTML = "<p>Conecte sua carteira para ver seus ativos</p>";
+            document.getElementById('listaVendas').innerHTML = "<li>Conecte sua carteira para ver seu histórico</li>";
+          }
+        } else {
+          // MetaMask não instalada
+          if (loadingMessage) loadingMessage.style.display = 'none';
+          dashboardContent.style.display = 'block';
+          
+          // Mostrar mensagens indicando que precisa instalar a MetaMask
+          document.getElementById('saldoValor').textContent = "MetaMask não encontrada";
+          document.getElementById('meusAtivos').innerHTML = "<p>Instale a MetaMask para gerenciar seus ativos</p>";
+          document.getElementById('listaVendas').innerHTML = "<li>Instale a MetaMask para ver seu histórico</li>";
+        }
+      }
+      
+      // Verificar quando as contas mudam
+      if (window.ethereum) {
+        window.ethereum.on('accountsChanged', checkWalletAndLoadDashboard);
+      }
+      
+      // Quando o botão de conectar no header for clicado
+      const connectHeaderButton = document.getElementById('connectButton');
+      if (connectHeaderButton) {
+        connectHeaderButton.addEventListener('click', async function() {
+          await connectWallet();
+          // Após a conexão ser estabelecida, verificar novamente
+          setTimeout(checkWalletAndLoadDashboard, 1000);
+        });
+      }
+      
+      // Conectar ao saque
+      const sacarButton = document.getElementById('sacarButton');
+      if (sacarButton) {
+        sacarButton.addEventListener('click', async () => {
+          if (typeof sacarSaldo === 'function') {
+            await sacarSaldo();
+          }
+        });
+      }
+      
+      // Verificar estado inicial
+      checkWalletAndLoadDashboard();
+    });
+  </script>
+</body>
+</html>

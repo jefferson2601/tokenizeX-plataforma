@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketplace - TokenizeX</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">TokenizeX</a>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="tokenizacao.html">Tokenizar</a>
+        <a href="negociacao.html">Marketplace</a>
+        <a href="produtor.html">Dashboard</a>
+        <button id="connectButton">Conectar Carteira</button>
+        <button id="disconnectButton" style="display:none;">Desconectar</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="produtos-section">
+      <h1>Marketplace de Ativos Tokenizados</h1>
+      <p>Compre ativos tokenizados diretamente dos produtores. Todos os valores são pagos em ETH.</p>
+      
+      <div class="loading-message" id="loadingMessage">Carregando produtos, por favor aguarde...</div>
+      
+      <!-- Adicionando um div para informações da carteira -->
+      <div id="walletNotice" style="display:none;" class="notice-box">
+        <p>Conecte sua carteira MetaMask para visualizar e comprar produtos.</p>
+      </div>
+      
+      <div id="produtosGrid" class="produtos-grid">
+        <!-- Os produtos serão carregados dinamicamente aqui -->
+      </div>
+      
+      <div id="noProdutos" class="no-produtos" style="display:none;">
+        <p>Não há produtos disponíveis no momento.</p>
+        <a href="tokenizacao.html" class="cta-button">Tokenize um Ativo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 TokenizeX — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loadingMessage = document.getElementById('loadingMessage');
+      const walletNotice = document.getElementById('walletNotice');
+      const noProdutos = document.getElementById('noProdutos');
+      
+      // Verificar se a carteira está conectada
+      async function checkWalletAndLoadProducts() {
+        try {
+          if (typeof window.ethereum !== 'undefined') {
+            // Verificar se há algum endereço selecionado
+            const accounts = await ethereum.request({ method: 'eth_accounts' });
+            
+            if (accounts && accounts.length > 0) {
+              // Carteira conectada
+              if (loadingMessage) loadingMessage.style.display = 'block';
+              if (walletNotice) walletNotice.style.display = 'none';
+              
+              // Carregar produtos
+              if (typeof carregarProdutos === 'function') {
+                await carregarProdutos();
+              }
+              
+              if (loadingMessage) loadingMessage.style.display = 'none';
+              
+              // Verificar se há produtos
+              const produtosGrid = document.getElementById('produtosGrid');
+              if (produtosGrid && produtosGrid.children.length === 0) {
+                if (noProdutos) noProdutos.style.display = 'block';
+              } else {
+                if (noProdutos) noProdutos.style.display = 'none';
+              }
+            } else {
+              // Carteira não conectada
+              if (loadingMessage) loadingMessage.style.display = 'none';
+              if (walletNotice) walletNotice.style.display = 'block';
+              if (noProdutos) noProdutos.style.display = 'none';
+            }
+          } else {
+            // MetaMask não instalada
+            if (loadingMessage) loadingMessage.style.display = 'none';
+            if (walletNotice) walletNotice.style.display = 'block';
+            if (noProdutos) noProdutos.style.display = 'none';
+          }
+        } catch (error) {
+          console.error("Erro ao verificar carteira:", error);
+          if (loadingMessage) loadingMessage.style.display = 'none';
+          if (walletNotice) walletNotice.style.display = 'block';
+          if (noProdutos) noProdutos.style.display = 'none';
+        }
+      }
+      
+      // Verificar quando as contas mudam
+      if (window.ethereum) {
+        window.ethereum.on('accountsChanged', checkWalletAndLoadProducts);
+      }
+      
+      // Quando o botão de conectar no header for clicado
+      const connectHeaderButton = document.getElementById('connectButton');
+      if (connectHeaderButton) {
+        connectHeaderButton.addEventListener('click', async function() {
+          await connectWallet();
+          // Após a conexão ser estabelecida, verificar novamente
+          setTimeout(checkWalletAndLoadProducts, 1000);
+        });
+      }
+      
+      // Verificar estado inicial
+      checkWalletAndLoadProducts();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokenizar Ativo - TokenizeX</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">TokenizeX</a>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="tokenizacao.html">Tokenizar</a>
+        <a href="negociacao.html">Marketplace</a>
+        <a href="produtor.html">Dashboard</a>
+        <button id="connectButton">Conectar Carteira</button>
+        <button id="disconnectButton" style="display:none;">Desconectar</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Tokenizar Novo Ativo</h1>
+    <div class="status-message" id="statusMessage"></div>
+    
+    <form id="tokenForm" class="token-form">
+      <label for="nome">Nome do Produto</label>
+      <input type="text" id="nome" required placeholder="Ex: Café Arábica Premium">
+
+      <label for="tipo">Tipo do Produto</label>
+      <select id="tipo" required>
+        <option value="">Selecione...</option>
+        <option value="cafe">Café</option>
+        <option value="soja">Soja</option>
+        <option value="milho">Milho</option>
+        <option value="trigo">Trigo</option>
+        <option value="algodao">Algodão</option>
+      </select>
+
+      <label for="peso">Peso Total (kg)</label>
+      <input type="number" id="peso" min="1" required placeholder="Ex: 1000">
+
+      <label for="precoUSD">Preço por kg (USD)</label>
+      <input type="number" id="precoUSD" step="0.01" min="0.01" required placeholder="Ex: 5.50">
+
+      <label for="precoETH">Preço por kg (ETH)</label>
+      <input type="text" id="precoETH" readonly class="input-estilo" placeholder="Preço convertido em ETH">
+
+      <div class="wallet-notice" id="walletNotice">
+        <p>É necessário conectar sua carteira MetaMask antes de tokenizar um ativo.</p>
+      </div>
+
+      <button type="submit" id="submitButton">Tokenizar Ativo</button>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 TokenizeX — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Forçar a conexão da carteira no carregamento
+      const walletConnected = await connectWallet();
+      
+      // Adicionar handler ao formulário diretamente
+      const tokenForm = document.getElementById('tokenForm');
+      if (tokenForm) {
+        tokenForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Verificar se a carteira está realmente conectada antes de tentar tokenizar
+          if (!contract || !signer) {
+            alert("Por favor, conecte sua carteira primeiro.");
+            return;
+          }
+          
+          console.log("Formulário enviado, iniciando tokenização...");
+          tokenizarAtivo();
+        });
+      }
+      
+      // Verificar quando o campo de USD é atualizado
+      const precoUSD = document.getElementById('precoUSD');
+      if (precoUSD) {
+        precoUSD.addEventListener('input', calcularPrecoETH);
+        // Calcular inicialmente se já tiver um valor
+        if (precoUSD.value) {
+          calcularPrecoETH();
+        }
+      }
+      
+      // Atualizar o botão de conectar se a carteira já estiver conectada
+      const connectButton = document.getElementById('connectButton');
+      if (connectButton && signer) {
+        const address = await signer.getAddress();
+        connectButton.textContent = `Conectado: ${address.slice(0, 6)}...${address.slice(-4)}`;
+        connectButton.disabled = true;
+        
+        // Mostrar o botão de desconectar
+        const disconnectButton = document.getElementById('disconnectButton');
+        if (disconnectButton) {
+          disconnectButton.style.display = 'inline-block';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
