@@ -3,6 +3,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: lighter;
 }
 
 body {
@@ -12,17 +14,26 @@ body {
   background-color: #cbeaee;
   font-weight: bold;
 }
-
+.logo-img{
+  height: 70px;
+  
+}
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
-
+.comprar-agora{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 1px;
+  margin-bottom: 10px;
+}
 /* Header e Navegação */
 .main-header {
-  background-color: #0a2540;
+  background-color: black;
   color: white;
   padding: 15px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -34,20 +45,10 @@ body {
   align-items: center;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.logo a {
-  color: white;
-  text-decoration: none;
-}
-
 .nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 5px;
 }
 
 .nav a {
@@ -58,13 +59,13 @@ body {
 }
 
 .nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #19e9f0;
   border-radius: 4px;
 }
 
 /* Botões */
 button {
-  background-color: #411f04;
+  background-color: #07798d;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -75,11 +76,11 @@ button {
 }
 
 button:hover {
-  background-color: #0c311a;
+  background-color: #486855;
 }
 
 button:disabled {
-  background-color: #0a2701;
+  background-color: #07798d;
   cursor: not-allowed;
 }
 
@@ -92,44 +93,777 @@ button:disabled {
 }
 
 .cta-button {
+  text-align: center;
   display: inline-block;
-  background-color: #0c311a;
+  background-color: #07798d;
+  width: -moz-fit-content; /* Para compatibilidade com Firefox mais antigo */
+  width: fit-content;     /* Faz o botão ter a largura do seu conteúdo */
   color: white;
-  padding: 12px 30px;
+  padding: 4px 8px; /* Padding reduzido para diminuir o tamanho */
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
   text-align: center;
-  margin-top: 20px;
+  margin: 10px 0; /* 10px de margem no topo/base, 0 nas laterais (centralização via pai) */
   transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #195012;
+  background-color: #486855;
 }
+
+/* =========================================
+   Estilos da Página Inicial (Home)
+   ========================================= */
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #0ea5e9 0%, #0a2540 100%);
-  color: white;
-  padding: 80px 0;
+  background: linear-gradient(rgba(26, 37, 51, 0.7), rgba(26, 37, 51, 0.7)), url('/imagens/tech/tokenizacao-imobiliaria.jpg') no-repeat center center/cover; /* Adiciona um overlay escuro semi-transparente */
+  color: #ffffff;
+  padding: 80px 0; /* Aumentado para mais impacto */
+  text-align: center;
+  overflow: hidden; /* Para garantir que elementos animados não causem scrollbars antes de aparecerem */
+}
+
+.hero2 {
+  background: linear-gradient(rgba(26, 37, 51, 0.7), rgba(26, 37, 51, 0.7)), url('/imagens/banners/banner5.jpg') no-repeat center center/cover; /* Adiciona um overlay escuro semi-transparente */
+  color: #ffffff;
+  padding: 80px 0; /* Aumentado para mais impacto */
+  text-align: center;
+  overflow: hidden; /* Para garantir que elementos animados não causem scrollbars antes de aparecerem */
+}
+
+.hero1 {
+  background: linear-gradient(rgba(26, 37, 51, 0.7), rgba(26, 37, 51, 0.7)), url('/imagens/tokenizacao/como-funciona1.png') no-repeat center center/cover; /* Adiciona um overlay escuro semi-transparente */
+  color: #ffffff;
+  padding: 80px 0; /* Aumentado para mais impacto */
+  text-align: center;
+  overflow: hidden; /* Para garantir que elementos animados não causem scrollbars antes de aparecerem */
+}
+
+
+
+/*parte negociação hero*/
+.hero2 h1 {
+  color: #ecf1f1;
+  animation: fadeInUp 0.8s ease-out forwards;
+  font-size: 2.8rem; /* Levemente aumentado */
+  margin-bottom: 20px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+
+.hero2 .hero2-subtitle {
+  color: floralwhite;
+  animation: fadeInUp 0.8s ease-out 0.3s forwards; /* 0.3s de delay */
+  font-size: 1.1rem; /* Levemente aumentado */
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.hero2 .hero2-cta {
+  padding: 14px 28px; /* Botão um pouco maior */
+  font-size: 1rem;
+}
+.info-container {
+  display: flex;
+  justify-content: space-between; /* espaço entre os elementos */
+  align-items: center;
+  padding: 40px 20px; /* espaço interno opcional */
+  gap: 40px; /* controle de distância entre colunas */
+  flex-wrap: wrap; /* em telas pequenas, pode quebrar */
+}
+
+
+/*parte negociação hero*/
+.hero h1 {
+  color: #ecf1f1;
+  animation: fadeInUp 0.8s ease-out forwards;
+  font-size: 2.8rem; /* Levemente aumentado */
+  margin-bottom: 20px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+
+.hero .hero-subtitle {
+  color: floralwhite;
+  animation: fadeInUp 0.8s ease-out 0.3s forwards; /* 0.3s de delay */
+  font-size: 1.1rem; /* Levemente aumentado */
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.hero .hero-cta {
+  padding: 14px 28px; /* Botão um pouco maior */
+  font-size: 1rem;
+}
+
+
+
+
+
+
+.info-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centraliza o conteúdo dentro de cada coluna */
+  text-align: center;
+  max-width: 50%;
+}
+
+.info-column img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+.ledger {
+  padding: 22px;
+  margin: auto;
+}
+.info-text {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.info-text h2 {
+  font-size: 1.2rem;
+  margin: 0 0 5px;
+  color: #012029;
+}
+
+.info-text p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.info-column {
+  animation: fadeSlideUp 1s ease forwards;
+  opacity: 0;
+}
+
+/* Aplica delay para o segundo banner aparecer depois */
+.info-column:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.info-column a img {
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.info-column a img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+@keyframes fadeSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.info-text {
+  animation: fadeSlideRight 1s ease forwards;
+  opacity: 0;
+  animation-delay: 0.6s;
+}
+
+
+
+
+/*parte tokenização*/
+
+.hero1 h1 {
+  color: #ecf1f1;
+  animation: fadeInUp 0.8s ease-out forwards;
+  font-size: 2.8rem; /* Levemente aumentado */
+  margin-bottom: 20px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.hero1 .hero-subtitle {
+  color: floralwhite;
+  animation: fadeInUp 0.8s ease-out 0.3s forwards; /* 0.3s de delay */
+  font-size: 1.1rem; /* Levemente aumentado */
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.hero1 .hero-cta {
+  padding: 14px 28px; /* Botão um pouco maior */
+  font-size: 1rem;
+}
+
+.container-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 20px;
+}
+
+.link-ajuda {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.link-item-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-item {
+  width: 100px; /* ajuste conforme necessário */
+  height: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.login-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  color: #012029;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.login-form label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #444;
+}
+
+.login-form input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.login-button {
+  display: block; /* Permite o uso de margin auto para centralização horizontal */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px; /* Espaçamento superior (ajuste conforme necessário) */
+  margin-bottom: 5px; /* Espaçamento inferior (ajuste conforme necessário) */
+  width: auto; /* Faz com que a largura se ajuste ao conteúdo e padding */
+  max-width: 150px; /* Define uma largura máxima para o botão (ajuste conforme necessário) */
+  padding: 9px 10px; /* Reduz o padding interno para um botão menor (ajuste conforme necessário) */
+  font-size: 1rem; /* Ajuste o tamanho da fonte se necessário */
+  min-width: 150px; 
+}
+
+.login-button:hover {
+  background-color: #004093;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  color: #888;
+  font-size: 14px;
+}
+
+.social-login {
+  padding: 2px;
+  display: flex;
+  gap: 30px; /* Reduzido o espaço entre os ícones */
+  margin-top: 5px; /* Reduzida a margem superior dos ícones */
+  justify-content: center;
+}
+.social-login a {
+  margin: 0;
+  padding: 0;
+  display: inline-flex; /* Garante que o link só ocupe o tamanho da imagem */
+  align-items: center;
+}
+
+.social-login a img {
+  width: 24px; /* Reduzido o tamanho dos ícones sociais */
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-login a:hover img {
+  opacity: 1;
+  transform: translateY(-6px); /* Efeito sutil de elevação */
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.linkedin {
+  background-color: #0077b5;
+}
+
+.google {
+  background-color: #db4437;
+}
+
+
+.whatsapp-float {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.whatsapp-float img {
+  width: 75px;
+  height: 75px;
+}
+
+
+
+/* How It Works Section */
+.how-it-works {
+  color: #011022;
+  padding: 10px 0; /* Reduzido */
+  background-color: #ffffff;
+}
+
+.how-it-works h2 {
+  margin-bottom: 10px; 
+}
+
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+
+}
+
+.step {
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 8px;
+  text-align: center;
+  border: #01042c 1px solid;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.step-icon {
+  display: inline-flex; /* Para alinhar e dimensionar o fundo corretamente */
+  align-items: center;
+  justify-content: center;
+  width: 70px;   /* Largura do círculo do ícone */
+  height: 70px;  /* Altura do círculo do ícone */
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #007bff; /* Cor primária */
+  margin-bottom: 20px; /* Aumenta o espaço abaixo do ícone */
+  color: #ffffff; /* Cor do emoji/texto do ícone */
+  background-color: #07798d; /* Cor de destaque para o fundo do ícone */
+  border-radius: 50%; /* Faz o fundo ser um círculo */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra sutil para o ícone */
+}
+
+.step h3 {
+  font-size: 1.3rem; /* Ajustado */
+  margin-bottom: 5px;
+  color: #011022;
+}
+
+
+.step p {
+  font-size: 0.9rem; /* Ajustado */
+  line-height: 1.6;
+  color: #011518;
+}
+
+/* Featured Assets Section */
+.featured-assets {
+  padding: 5px 0;
   text-align: center;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: #021924;
-  font-weight: bold;
+.featured-assets h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #011027;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto;
-  color: #1f1001;
-  font-weight: 500;
+.featured-assets .section-subtitle {
+  font-size: 1rem;
+  color: #05011f;
+  margin-bottom: 10px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.featured-item {
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.featured-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.featured-item h3 {
+  font-size: 1.25rem;
+  margin: 10px 10px 10px;
+  color: #0b011a; /* Cor primária para o título do card */
+}
+
+.featured-item p {
+  text-align: justify;
+  font-size: 0.9rem;
+  color: #01042c;
+  padding: 0 10px 10px;
+  line-height: 1.6;
+  flex-grow: 1; /* Faz o parágrafo ocupar o espaço restante */
+}
+
+/* Benefits Section */
+.benefits {
+  padding: 5px 0;
+}
+
+.benefits h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  font-size: 1rem; /* Ajustado */
+  margin-bottom: 10px; /* Ajustado */
+  color: #08042e;
+}
+
+.benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  margin: 0 auto;
+  column-count: 2; /* Divide o conteúdo em duas colunas */
+  column-gap: 20px; /* Espaçamento entre as colunas */
+}
+
+.benefits ul li {
+  font-size: 0.85rem; /* Ajustado */
+  font-weight: lighter;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  line-height: 1.2;
+  color: #060324;
+  position: relative;
+  border-radius: 6px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+  break-inside: avoid-column; /* Evita que um item seja quebrado entre colunas */
+}
+
+.benefits ul li:hover {
+    background-color: #e9ecef;
+}
+
+.benefits ul li .benefit-icon {
+  margin-right: 10px;
+  color: #007bff; /* Cor primária */
+  
+}
+/* Wrapper para seções Contato e Benefits lado a lado */
+.contact-benefits-wrapper {
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+  gap: 30px; /* Espaçamento horizontal e vertical entre as seções quando quebram */
+  padding-top: 30px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  align-items: flex-start; /* Alinha os itens ao topo se tiverem alturas diferentes */
+}
+
+.contact-benefits-wrapper > .contato,
+.contact-benefits-wrapper > .benefits {
+  flex: 1; /* Faz com que cada seção ocupe uma parte igual do espaço */
+  min-width: 320px; /* Largura mínima antes de quebrar para a próxima linha */
+
+}
+
+/* Estilo para o parágrafo introdutório na seção de contato */
+.contact-intro {
+  margin-bottom: 1px;
+  padding: 1px;
+  line-height: 1;
+  font-size: 1rem;
+  color: #4b5563; /* Cor de texto suave */
+  background-color: #fff;
+}
+#contact {
+  background-color: #fff;
+
+}
+
+/* Ajustes para os títulos H2 dentro do wrapper */
+.contact-benefits-wrapper .contato h2,
+.contact-benefits-wrapper .benefits h2 {
+  text-align: center; /* Centraliza os títulos */
+  font-size: 1.75rem; /* Tamanho de fonte consistente e um pouco maior */
+  margin-bottom: 25px; /* Espaçamento abaixo do título */
+  color: #1e3a8a; /* Cor consistente para os títulos */
+}
+
+/* Ajuste específico para o h2 de benefits para sobrescrever regra anterior se necessário */
+.contact-benefits-wrapper .benefits h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: lighter;
+}
+
+/* Ajuste para a lista de benefícios dentro do wrapper */
+.contact-benefits-wrapper .benefits ul {
+  max-width: 100%; /* Garante que a lista ocupe a largura da sua coluna flexível */
+  column-count: 2;
+  column-gap: 20px;
+  background-color: #fff;
+}
+
+
+/* Responsividade: Em telas menores, fazer com que fiquem um abaixo do outro */
+@media (max-width: 768px) { /* Ajuste este breakpoint conforme necessário */
+  .contact-benefits-wrapper {
+    flex-direction: column; /* Empilha as seções verticalmente */
+  }
+}
+
+
+/* Tech Showcase Section */
+.tech-showcase {
+  padding: 50px 0;
+  background-color: #0d1a2e; /* Fundo escuro para contraste */
+  text-align: center;
+  overflow: hidden; /* Para o slider */
+}
+
+.tech-showcase h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #ffffff; /* Texto branco no fundo escuro */
+}
+
+.tech-logos-slider {
+  width: 100%;
+  position: relative;
+}
+
+.tech-logos-slider::before,
+.tech-logos-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%; /* Largura do gradiente para suavizar as bordas */
+  max-width: 150px;
+  z-index: 2;
+}
+
+.tech-logos-slider::before {
+  left: 0;
+  background: linear-gradient(to right, #0d1a2e 20%, rgba(13, 26, 46, 0) 100%);
+}
+
+.tech-logos-slider::after {
+  right: 0;
+  background: linear-gradient(to left, #0d1a2e 20%, rgba(13, 26, 46, 0) 100%);
+}
+
+.tech-logos-track {
+  display: flex;
+  /* (largura_logo_estimada + margin_horizontal_total) * numero_total_de_logos (incluindo duplicatas) */
+  /* Ex: (80px de logo + 80px de margin) * 14 logos = 2240px */
+  width: calc((80px + 80px) * 14); 
+  animation: scrollLogos 40s linear infinite;
+}
+
+.tech-logos-track img {
+  height: 50px; /* Tamanho dos logos */
+  margin: 0 40px; /* Espaçamento entre logos */
+  object-fit: contain;
+  filter: grayscale(50%) brightness(1.5); /* Efeito para logos em fundo escuro */
+  opacity: 0.8;
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tech-logos-slider:hover .tech-logos-track {
+  animation-play-state: paused; /* Pausa a animação no hover do slider */
+}
+
+.tech-logos-track img:hover {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Metade da largura total do track */
+    transform: translateX(calc(-1 * (80px + 80px) * 7)); 
+  }
+}
+/* Definição da animação fadeInUp */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px); /* Começa um pouco abaixo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Move para a posição original */
+  }
+}
+
+/* Ajustes gerais para fontes e espaçamentos menores (exemplo) */
+body {
+  font-size: 14px; /* Fonte base um pouco menor, se desejar */
+}
+
+
+section {
+  padding: 20px 0; /* Padrão de padding para seções */
+}
+
+/* Responsividade para seções específicas */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero .hero-subtitle {
+    font-size: 1rem;
+  }
+  .how-it-works h2,
+  .featured-assets h2,
+  .benefits h2,
+  .tech-showcase h2 {
+    font-size: 1.8rem;
+  }
+
+  .tech-logos-track img {
+    height: 40px;
+    margin: 0 25px;
+  }
+  /* Recalcular a animação e largura do track para mobile se necessário, ou deixar como está */
+  .tech-logos-track {
+    width: calc((60px + 50px) * 14); /* Exemplo de ajuste para mobile */
+  }
+  @keyframes scrollLogos { /* Redefinir para mobile se o cálculo acima mudar */
+    100% {
+      transform: translateX(calc(-1 * (60px + 50px) * 7));
+    }
+  }
+}
+
 
 /* Seções de Conteúdo */
 section {
@@ -161,7 +895,7 @@ section h2 {
 }
 
 .step h3 {
-  color: #3b82f6;
+  color: #020e22;
   margin-bottom: 15px;
 }
 
@@ -196,22 +930,22 @@ section h2 {
   max-width: 600px;
   margin: 0 auto;
   background-color: white;
-  padding: 30px;
+  padding: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .token-form label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 500;
 }
 
 .token-form input,
 .token-form select {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
+  padding: 6px;
+  margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -222,23 +956,147 @@ section h2 {
 
 .token-form button {
   width: 100%;
-  padding: 12px;
-  font-size: 1rem;
+  padding: 6px;
+  font-size: 0.85rem;
 }
+
+/* Estilos para a página de Tokenização */
+
+.page-title-container {
+  text-align: center;
+  margin-bottom: 20px; /* Espaçamento abaixo do título principal */
+}
+
+.page-title-container h1 {
+  font-size: 2.5rem; /* Ajuste o tamanho conforme preferir */
+  color: #0a2540; /* Cor consistente com outros títulos H1 */
+}
+
+.status-message {
+  text-align: center;
+  padding: 7px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  /* Estilos específicos para sucesso/erro podem ser adicionados aqui ou via JS */
+}
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+
+.tokenization-layout {
+  display: flex;
+  flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+  gap: 10px; /* Espaçamento entre as colunas */
+  align-items: flex-start; /* Alinha os itens ao topo se tiverem alturas diferentes */
+}
+
+.form-column {
+  flex: 1; /* Ocupa uma parte do espaço */
+  min-width: 320px; /* Largura mínima antes de quebrar */
+  /* O formulário .token-form já tem seus estilos de padding, background, etc. */
+}
+
+.info-column {
+  flex: 1; /* Ocupa uma parte do espaço */
+  min-width: 300px; /* Largura mínima antes de quebrar */
+  padding: 20px;
+  background-color: #f8f9fa; /* Um fundo suave para a coluna de informações */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.info-column h2 {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #020f1d; /* Cor de destaque */
+}
+
+.info-column p {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: #020f1d;
+}
+
+/* Ajustes no .token-form para quando estiver na coluna */
+.form-column .token-form {
+  max-width: 100%; /* O formulário ocupará a largura da .form-column */
+  margin-left: 0;
+  margin-right:10%;
+}
+
+/* Wallet Notice dentro do formulário */
+.token-form .wallet-notice {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 6px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.token-form .wallet-notice p {
+  margin: 0;
+  font-size: 0.5rem;
+}
+
+
+/* Responsividade para o layout de tokenização */
+@media (max-width: 860px) { /* Ponto de quebra onde as colunas podem ficar muito apertadas */
+  .tokenization-layout {
+    flex-direction: column; /* Empilha as colunas */
+  }
+  .form-column,
+  .info-column {
+    min-width: 100%; /* Faz cada coluna ocupar a largura total */
+  }
+  .info-column {
+    margin-top: 30px; /* Adiciona espaço quando empilhado abaixo do formulário */
+  }
+}
+
 
 /* Produtos Grid */
 .produtos-section {
-  padding: 40px 0;
+  background: linear-gradient(145deg, #b9d7db, #82a0a5); /* degrade sutil */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 10px rgba(72, 104, 85, 0.3); /* sombra interna + externa */
+  margin: 30px auto;
+  padding: 40px;
+  max-width: 1200px;
+  transition: all 0.3s ease-in-out;
+  transform: perspective(1000px);
 }
+
+.produtos-section:hover {
+  transform: perspective(1000px) translateZ(5px) scale(1.01); /* efeito leve ao passar o mouse */
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(72, 104, 85, 0.5);
+}
+
 
 .produtos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* reduzido de 300px para 220px */
+  gap: 16px; /* mais espaçamento entre os itens */
+  padding: 20px;
 }
 
+ 
+
 .produto-card {
-  background-color: rgb(161, 189, 230);
+  background-color: rgb(12, 33, 58);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -257,12 +1115,19 @@ section h2 {
 
 .produto-card h3 {
   padding: 15px 15px 5px;
-  color: #0a2540;
+  color: beige;
+  font-size: 1.1rem;
+  height: 48px; /* altura fixa */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 
 .produto-card p {
   padding: 0 15px;
   margin-bottom: 8px;
+  color: rgb(132, 184, 214);
 }
 
 .quantidade-input {
@@ -291,9 +1156,70 @@ section h2 {
   font-size: 1.2rem;
   margin-bottom: 15px;
 }
+#grafico {
+  background-image: url(/imagens/grafico.jpg);
+   background-size: cover;
+  background-position: center;
+  opacity: 0.7; /* tudo dentro do saldo ficará translúcido */
+}
+#saldo {
+  background-image: url(/imagens/chuva.jpg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7; /* tudo dentro do saldo ficará translúcido */
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px;
+}
+
+.form-container form {
+  width: 100%;
+  max-width: 450px; /* Menor que os 600px anteriores */
+  padding: 2px;
+  border-radius: 8px;
+}
+
+.form-container h4 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 1.5rem; /* menor */
+  margin-bottom: 6px;
+  color: #fff;
+  text-align: center;
+}
+
+.form-container label {
+  color: #fff;
+  display: block;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-size: 0.9rem;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 6px;
+  margin-top: -5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.8rem;
+}
+
+.form-container textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+
+
+
 
 .historico {
-  background-color: white;
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -303,6 +1229,12 @@ section h2 {
   text-align: left;
   margin-bottom: 20px;
   font-size: 1.5rem;
+  color: #fff;
+}
+.titulo-historico {
+  background-color: #012029;
+  border-radius: 20px;
+  color: #fff;
 }
 
 .historico ul {
@@ -324,7 +1256,62 @@ section h2 {
   color: white;
   padding: 30px 0;
   text-align: center;
+  margin-top: 20px;
 }
+
+.footer p {
+  margin: 0;
+}
+.swaps-container {
+  padding: 40px 0;
+  background-color: #e9ecec;
+  color: #fff;
+}
+
+.swaps-container h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.swaps {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo-swaps {
+  background-color: #1e464d;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-swaps:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  background-color: #235a63;
+}
+
+.logo-swaps img {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.step-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -353,11 +1340,6 @@ section h2 {
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* Estilos de tipografia aprimorados */
-body {
-  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.7;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 0.8em;
@@ -366,12 +1348,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #0a2540;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.2em;
-  position: relative;
-  padding-bottom: 15px;
-}
+
 
 h1::after {
   content: "";
@@ -411,25 +1388,182 @@ section {
 .text-center {
   text-align: center;
 }
+.tokenization-layout {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.botao-tokenizacao {
+  /* Centralização */
+  display: block; /* Permite o uso de margin auto para centralização horizontal */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px; /* Espaçamento superior (ajuste conforme necessário) */
+  margin-bottom: 10px; /* Espaçamento inferior (ajuste conforme necessário) */
+  width: auto; /* Faz com que a largura se ajuste ao conteúdo e padding */
+  max-width: 150px; /* Define uma largura máxima para o botão (ajuste conforme necessário) */
+  padding: 10px 10px; /* Reduz o padding interno para um botão menor (ajuste conforme necessário) */
+  font-size: 1rem; /* Ajuste o tamanho da fonte se necessário */
+  min-width: 150px; /* Opcional: define uma largura mínima para o botão */
 
+  
+}
+.como-funciona {
+  display: inline-block;
+  flex-wrap: wrap;
+  height: 70%;
+  max-width: 70%;
+  margin-top: -20px;
+  margin-bottom: -5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: -2px;
+  padding-bottom: -10px;
+  justify-content: center;
+  align-items: center;
+}
+  
 .text-center h1::after {
   left: 50%;
   transform: translateX(-50%);
 }
 
 /* Espaçamento de seções */
-.dashboard-section {
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   margin-bottom: 40px;
+}
+
+.dashboard-section {
   background-color: #f9fafc;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
 }
 
+.saldo-box button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.saldo-box button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Desenvolvedor */
+.desenvolvedor {
+  background-color: #223236;
+  border-radius: 20px;
+  gap: 20px;
+  padding: 25px;
+  max-width: 100%;
+
+}
+
+
+.dev-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  
+}
+
+.dev-img {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.dev-img img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 50px;
+  object-fit: cover;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dev-email {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #23e2e2;
+}
+
+.dev-social {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.dev-social a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.dev-desc {
+  flex: 1;
+}
+
+.dev-desc h3 {
+  margin: 0;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.dev-desc p {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.portfolio-btn {
+  display: inline-block;
+  background-color: #04324b;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.portfolio-btn:hover {
+  background-color: #023605;
+}
+
+
+/* Responsividade para telas pequenas */
+@media (max-width: 600px) {
+  .dev-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dev-desc {
+    margin-top: 20px;
+  }
+
+  .dev-social {
+    flex-direction: column;
+  }
+}
+
 /* Estilo para destaque de informações */
 .info-highlight {
   background-color: #f0f9ff;
-  border-left: 4px solid #3b82f6;
+  border-left: 4px solid #051631;
   padding: 15px;
   margin: 20px 0;
   border-radius: 0 6px 6px 0;
@@ -467,7 +1601,7 @@ section {
 .produto-card h3 {
   font-size: 1.3rem;
   padding: 18px 18px 8px;
-  color: #1e3a8a;
+  color: #fff;
 }
 
 /* Estilo para notificações e mensagens */
@@ -497,4 +1631,175 @@ section {
   font-size: 1.1rem;
   color: #19e9f0;
   font-style: italic;
+}
+
+/* =========================================
+   Estilos do Rodapé (Site Footer)
+   ========================================= */
+
+.site-footer {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #1a2533; /* Um tom de azul escuro/cinza para seriedade */
+  color: #d3dbe2; /* Cor de texto suave para boa legibilidade */
+  padding: 15px 0 15px; /* Reduzido o padding geral */
+  font-size: 0.65rem; /* Reduzida a fonte base do rodapé */
+  line-height: 1.6;
+}
+
+.site-footer .container {
+  /* Se você já tem uma classe .container global, este estilo pode não ser necessário
+     ou pode precisar de ajuste para corresponder ao seu layout existente. */
+  max-width: 1140px; /* Largura comum para containers */
+  margin: 0 auto;
+  padding: 0 5px; /* Espaçamento lateral */
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px; /* Reduzido o espaço entre as seções */
+  margin-bottom: 10px; /* Reduzida a margem inferior */
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px; /* Largura mínima para cada seção antes de quebrar */
+  margin-bottom: 5px; /* Reduzida a margem inferior da seção */
+}
+
+.footer-section h4 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #ffffff; /* Títulos em branco para destaque */
+  font-size: 1rem; /* Reduzido o tamanho da fonte do título da seção */
+  margin-bottom: 5px; /* Reduzida a margem inferior do título */
+  position: relative;
+  padding-bottom: 4px; /* Reduzido o padding inferior do título */
+}
+
+/* Linha sutil abaixo dos títulos das seções */
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #007bff; /* Cor de destaque da sua marca */
+}
+
+.footer-logo {
+  max-width: 100px; /* Reduzido o tamanho do logo */
+  margin-bottom: 10px; /* Reduzida a margem inferior do logo */
+  opacity: 0.9;
+}
+
+.footer-section.about p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: lighter;
+  font-size: 12px;
+  color: #ced4da; /* Texto descritivo um pouco mais claro */
+}
+
+.footer-section.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  column-count: 2; /* Divide a lista em 2 colunas */
+  column-gap: 20px; /* Espaçamento entre as colunas */
+}
+
+.footer-section.links ul li {
+   font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: lighter;
+  margin-bottom: 8px; /* Reduzida a margem entre os itens da lista */
+  break-inside: avoid-column; /* Evita que um item de lista seja quebrado entre colunas */
+}
+
+.footer-section.links ul li a {
+  color: #adb5bd;
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-section.links ul li a:hover {
+  color: #ffffff; /* Destaque no hover */
+  padding-left: 5px; /* Pequeno efeito de indentação no hover */
+}
+
+.footer-section.contact-social p {
+  font-weight: lighter;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 12px;
+  margin-bottom: 8px; /* Reduzida a margem do parágrafo de contato */
+}
+
+.footer-section.contact-social p a {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: lighter;
+  color: #adb5bd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section.contact-social p a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 30px; /* Reduzido o espaço entre os ícones */
+  margin-top: 5px; /* Reduzida a margem superior dos ícones */
+}
+
+.social-icons a img {
+  width: 24px; /* Reduzido o tamanho dos ícones sociais */
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  opacity: 1;
+  transform: translateY(-6px); /* Efeito sutil de elevação */
+}
+
+.footer-bottom {
+   font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: lighter;
+  text-align: center;
+  padding-top: 05px; /* Reduzido o padding superior */
+  border-top: 1px solid #343a40; /* Linha separadora sutil */
+  font-size: 0.8rem; /* Reduzida a fonte do copyright */
+  color: #030a11; /* Cor mais escura para o copyright */
+}
+
+/* Ajustes Responsivos para o Rodapé */
+@media (max-width: 992px) {
+  .footer-section {
+    min-width: calc(50% - 15px); /* Duas colunas em tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center; /* Centralizar conteúdo em mobile */
+    text-align: center;
+  }
+
+  .footer-section {
+    min-width: 100%; /* Uma coluna em mobile */
+    margin-bottom: 30px;
+  }
+
+  .footer-section h4::after {
+    left: 50%; /* Centralizar a linha abaixo do título */
+    transform: translateX(-50%);
+  }
+
+  .social-icons {
+    justify-content: center; /* Centralizar ícones sociais */
+  }
 }

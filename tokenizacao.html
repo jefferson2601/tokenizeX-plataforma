@@ -9,8 +9,8 @@
 <body>
   <header class="main-header">
     <div class="container">
-      <div class="logo">
-        <a href="index.html">TokenizeX</a>
+       <div class="logo">
+        <a href="index.html"><img class="logo-img" src="/imagens/logo.png" alt="Logo TokenizeX"></a>
       </div>
       <nav class="nav">
         <a href="index.html">Início</a>
@@ -22,50 +22,152 @@
       </nav>
     </div>
   </header>
+  <section class="hero1">
+    <div class="container">
+      <h1>Transforme Ativos Reais em Oportunidades Digitais</h1>
+      <p class="hero-subtitle">Com TokenizeX, seus ativos ganham liquidez, segurança e acesso a um novo mercado global. Conecte sua carteira e comece a tokenizar hoje mesmo.</p>
+      <a href="tokenizacao.html" class="cta-button hero-cta">Tokenizar Meu Ativo</a>
+    </div>
+  </section>
 
   <main class="container">
-    <h1>Tokenizar Novo Ativo</h1>
-    <div class="status-message" id="statusMessage"></div>
-    
-    <form id="tokenForm" class="token-form">
-      <label for="nome">Nome do Produto</label>
-      <input type="text" id="nome" required placeholder="Ex: Café Arábica Premium">
+    <div class="page-title-container"> <!-- Container para o título principal da página -->
+      <h1>Tokenizar Novo Ativo</h1>
+    </div>
+    <div class="status-message" id="statusMessage"></div> <!-- Mensagem de status acima do layout de duas colunas -->
 
-      <label for="tipo">Tipo do Produto</label>
-      <select id="tipo" required>
-        <option value="">Selecione...</option>
-        <option value="cafe">Café</option>
-        <option value="soja">Soja</option>
-        <option value="milho">Milho</option>
-        <option value="trigo">Trigo</option>
-        <option value="algodao">Algodão</option>
-      </select>
+    <div class="tokenization-layout">
+      <div class="form-column">
+        <form id="tokenForm" class="token-form">
+          <label for="nome">Nome do Produto</label>
+          <input type="text" id="nome" required placeholder="Ex: Casa de Praia na Flórida">
 
-      <label for="peso">Peso Total (kg)</label>
-      <input type="number" id="peso" min="1" required placeholder="Ex: 1000">
+          <label for="tipo">Tipo do Ativo</label>
+          <select id="tipo" required>
+            <option value="">Selecione...</option>
+            <option value="casa">Casa Na Praia</option>
+            <option value="fazenda">Fazenda</option>
+            <option value="hotel">Hotel</option>
+            <option value="condominio">Condomínio</option>
+            <option value="predio">Prédio Comercial</option>
+          </select>
 
-      <label for="precoUSD">Preço por kg (USD)</label>
-      <input type="number" id="precoUSD" step="0.01" min="0.01" required placeholder="Ex: 5.50">
+          <label for="peso">MarketCap</label>
+          <input type="number" id="peso" min="1" required placeholder="Ex: 1000">
 
-      <label for="precoETH">Preço por kg (ETH)</label>
-      <input type="text" id="precoETH" readonly class="input-estilo" placeholder="Preço convertido em ETH">
+          <label for="precoUSD">Preço por Token (USD)</label>
+          <input type="number" id="precoUSD" step="0.01" min="0.01" required placeholder="Ex: 5.50">
 
-      <div class="wallet-notice" id="walletNotice">
-        <p>É necessário conectar sua carteira MetaMask antes de tokenizar um ativo.</p>
+          <label for="precoETH">Preço por Token (ETH)</label>
+          <input type="text" id="precoETH" readonly placeholder="Preço convertido em ETH">
+
+          <div class="wallet-notice" id="walletNotice" style="display: none;"> <!-- Inicialmente oculto, controlado por JS -->
+            <p>É necessário conectar sua carteira MetaMask antes de tokenizar um ativo.</p>
+          </div>
+          <button class="botao-tokenizacao" type="submit" id="submitButton">Tokenizar Ativo</button>
+
+          
+        </form>
       </div>
+      <div class="info-column">
+      
+<section class="login-section">
+  <div class="login-box">
+    <h2>Entrar na Plataforma</h2>
+    <form class="login-form">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" placeholder="Digite seu e-mail" required>
 
-      <button type="submit" id="submitButton">Tokenizar Ativo</button>
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" placeholder="Digite sua senha" required>
+
+      <button type="submit" class="login-button">Entrar</button>
     </form>
-  </main>
 
-  <footer class="footer">
+    <div class="divider">ou entre com</div>
+
+    <div class="social-login">
+      <a href="#" target="_blank" title="Google"><img src="/imagens/google-removebg-preview.png" alt="Google"></a>
+      <a href="#" target="_blank" title="Facebook"><img src="/imagens/facebook-removebg-preview.png" alt="Facebook"></a>
+      <a href="https://linkedin.com/in/jefferson2601" target="_blank" title="LinkedIn"><img src="/imagens/social/linkedin.png" alt="LinkedIn"></a>
+    </div>
+  </div>
+</section>
+
+  
+      </div>
+  </main>
+  <section class="container-link">
+  <div class="link-ajuda">
+    <h3>Tudo sobre tokenização de ativos: um guia completo</h3>
+    <a href="https://tokeniza.com.br/tudo-sobre-tokenizacao-ativos/" class="link-item-container">
+      <img class="link-item" src="/imagens/tokenizacao/tokenizacao.png" alt="img">
+      <p class="section-subtitle">
+        A tokenização de ativos é uma das maiores inovações do mercado financeiro na era digital. Ela representa a convergência entre o mundo físico e o virtual, transformando ativos tradicionais, como imóveis, ações, obras de arte em tokens digitais negociáveis em plataformas baseadas em blockchain.
+
+Essa tecnologia não só democratiza o acesso a investimentos, permitindo a compra de frações de grandes ativos, como também aumenta a liquidez....... 
+        
+      </p>
+    </a>
+  </div>
+
+  <div class="link-ajuda">
+    <h3>Tokenização de imóveis: O que é e como funciona?</h3>
+    <a href="https://blog.universalsoftware.com.br/tokenizacao-de-imoveis/" class="link-item-container">
+      <img class="link-item" src="/imagens/tokenizacao/tokenizacao3.png" alt="img">
+      <p class="section-subtitle">
+        Tokenizar ativos, ou seja, transformá-los em frações digitais negociáveis por meio da tecnologia blockchain, vem se tornando cada vez mais recorrente em diversos setores da economia mundial. Seguindo essa tendência, a tokenização de imóveis é uma realidade iminente no mercado imobiliário.
+
+Esse processo permite que um imóvel seja dividido em pequenos tokens, que representam partes do ativo, facilitando a compra, venda e negociação de propriedades de forma ágil e acessível. Essa prática consegue democratizar o acesso ao mercado imobiliário, permitindo que mais pessoas invistam em propriedades ao mesmo tempo que traz maior liquidez aos ativos.
+
+
+      </p>
+    </a>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2025 TokenizeX — Todos os direitos reservados.</p>
+      <div class="footer-content">
+        <div class="footer-section about">
+          <a href="index.html"><img src="/imagens/logo.png" alt="Logo TokenizeX" class="footer-logo"></a>
+          <p>TokenizeX é uma plataforma inovadora para tokenizar ativos reais com segurança e transparência, com foco em tokenização imobiliária.</p>
+        </div>
+        <div class="footer-section links">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="tokenizacao.html">Tokenizar Ativo</a></li>
+            <li><a href="negociacao.html">Marketplace</a></li>
+            <li><a href="produtor.html">Dashboard do Produtor</a></li>
+            <li><a href="faq.html">Perguntas Frequentes (FAQ)</a></li>
+            <li><a href="termos.html">Termos de Serviço</a></li>
+            <li><a href="privacidade.html">Política de Privacidade</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact-social">
+          <h4>Contato & Redes Sociais</h4>
+          <p>Email: <a href="mailto:contato@tokenizex.com">jefferson260114@gmail.com</a></p>
+          <!-- 
+            TODO: Adicione os ícones SVG ou PNG das suas redes sociais na pasta /imagens/social/
+            e substitua o '#' pelos links corretos.
+          -->
+          <div class="social-icons">
+            <a href="https://wa.me/5598985093657" target="_blank" title="WhatsApp"><img src="/imagens/social/whatsapp.png" alt="WhatsApp"></a>
+            <a href="https://github.com/jefferson2601" target="_blank" title="Github"><img src="/imagens/social/github.png" alt="Github"></a>
+            <a href="https://linkedin.com/in/jefferson2601" target="_blank" title="LinkedIn"><img src="/imagens/social/linkedin.png" alt="LinkedIn"></a>
+           
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> TokenizeX — Todos os direitos reservados.</p>
+      </div>
     </div>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-<script src="app.js"></script>
+  <script src="app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       // Forçar a conexão da carteira no carregamento
@@ -112,6 +214,11 @@
         }
       }
     });
+
+    // Script para atualizar o ano dinamicamente (se não estiver em um JS global)
+    // Se o script do currentYear já estiver no final do body de index.html e for global, não precisa repetir.
+    // Caso contrário, adicione aqui ou mova para um local que seja carregado em todas as páginas.
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

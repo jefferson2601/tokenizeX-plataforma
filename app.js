@@ -1,10 +1,134 @@
 
-const contractAddress = "0xA65A636C3922e80889B0BAFc063F561E631105Fa";
+const contractAddress = "0xcE22DeC3101d3Ed8884FFe8971221bae17DAb574";
 const contractABI = [
     {
       "inputs": [],
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "needed",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ERC1155InsufficientBalance",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "approver",
+          "type": "address"
+        }
+      ],
+      "name": "ERC1155InvalidApprover",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "idsLength",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "valuesLength",
+          "type": "uint256"
+        }
+      ],
+      "name": "ERC1155InvalidArrayLength",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "ERC1155InvalidOperator",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        }
+      ],
+      "name": "ERC1155InvalidReceiver",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "ERC1155InvalidSender",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "ERC1155MissingApprovalForAll",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
     },
     {
       "anonymous": false,
@@ -74,7 +198,7 @@ const contractABI = [
         {
           "indexed": false,
           "internalType": "uint256",
-          "name": "quantidadeKg",
+          "name": "quantidadeToken",
           "type": "uint256"
         },
         {
@@ -117,13 +241,13 @@ const contractABI = [
         {
           "indexed": false,
           "internalType": "uint256",
-          "name": "quantidadeKg",
+          "name": "quantidadeToken",
           "type": "uint256"
         },
         {
           "indexed": false,
           "internalType": "uint256",
-          "name": "precoPorKg",
+          "name": "precoPorToken",
           "type": "uint256"
         }
       ],
@@ -299,7 +423,7 @@ const contractABI = [
         },
         {
           "internalType": "uint256",
-          "name": "quantidadeKg",
+          "name": "quantidadeToken",
           "type": "uint256"
         }
       ],
@@ -332,12 +456,12 @@ const contractABI = [
             },
             {
               "internalType": "uint256",
-              "name": "precoPorKg",
+              "name": "precoPorToken",
               "type": "uint256"
             },
             {
               "internalType": "uint256",
-              "name": "quantidadeKg",
+              "name": "marktcap",
               "type": "uint256"
             },
             {
@@ -391,12 +515,12 @@ const contractABI = [
             },
             {
               "internalType": "uint256",
-              "name": "precoPorKg",
+              "name": "precoPorToken",
               "type": "uint256"
             },
             {
               "internalType": "uint256",
-              "name": "quantidadeKg",
+              "name": "marktcap",
               "type": "uint256"
             },
             {
@@ -485,12 +609,12 @@ const contractABI = [
         },
         {
           "internalType": "uint256",
-          "name": "precoPorKg",
+          "name": "precoPorToken",
           "type": "uint256"
         },
         {
           "internalType": "uint256",
-          "name": "quantidadeKg",
+          "name": "marktcap",
           "type": "uint256"
         },
         {
@@ -528,7 +652,7 @@ const contractABI = [
         },
         {
           "internalType": "uint256[]",
-          "name": "amounts",
+          "name": "values",
           "type": "uint256[]"
         },
         {
@@ -561,7 +685,7 @@ const contractABI = [
         },
         {
           "internalType": "uint256",
-          "name": "amount",
+          "name": "value",
           "type": "uint256"
         },
         {
@@ -678,12 +802,12 @@ const contractABI = [
         },
         {
           "internalType": "uint256",
-          "name": "_pesoKg",
+          "name": "_marktcap",
           "type": "uint256"
         },
         {
           "internalType": "uint256",
-          "name": "_precoPorKg",
+          "name": "_precoPorToken",
           "type": "uint256"
         }
       ],
@@ -739,13 +863,13 @@ const USD_TO_ETH_RATE = 0.00033; // 1 USD = 0.00033 ETH (exemplo)
 // Função para obter imagem com base no tipo de produto
 function getImagemPorTipo(tipo) {
   const imagens = {
-    soja: "imagens/soja.png",
-    milho: "imagens/milho.png",
-    cafe: "imagens/café.png",
-    trigo: "imagens/trigo.png",
-    algodao: "imagens/algodao.png"
+    casa: "imagens/featured/casa.jpg",
+    fazenda: "imagens/featured/fazenda.jpg",
+    condominio: "imagens/featured/condominio.jpg",
+    hotel: "imagens/featured/hotel.jpg",
+    predio: "imagens/featured/predio.jpg"
   };
-  return imagens[tipo.toLowerCase()] || "imagens/generico.png";
+  return imagens[tipo.toLowerCase()] || "imagens/featured/generico.jpg";
  
 }
 
@@ -939,12 +1063,8 @@ function calcularPrecoETH() {
     precoETHInput.value = "";
   }
 }
-
 // Função para tokenizar um novo ativo
 
-// Modificar a função tokenizarAtivo
-// Função para tokenizar um novo ativo
-// Função para tokenizar um novo ativo
 async function tokenizarAtivo() {
     if (tokenizacaoEmAndamento) {
       console.log("Tokenização já em andamento, ignorando chamada duplicada");
@@ -1075,120 +1195,93 @@ async function tokenizarAtivo() {
 
 // Função auxiliar para carregar todos os produtos sem atualizar a UI
 async function carregarTodosProdutos(updateUI = true) {
-    if (!contract) {
-      return [];
-    }
-  
-    try {
-      // Verificar se podemos acessar cada produto individualmente
-      let produtos = [];
-      let tokenId = 1;
-      let falhasConsecutivas = 0;
-      const MAX_FALHAS_CONSECUTIVAS = 3;
-      
-      while (falhasConsecutivas < MAX_FALHAS_CONSECUTIVAS && tokenId <= 50) { // Limite ampliado para 50
-        try {
-          const produto = await contract.produtos(tokenId);
-          
-          // Adicionar log detalhado para depuração
-          console.log(`Produto ${tokenId} detalhes:`, {
+  if (!contract) {
+    return [];
+  }
+
+  try {
+    let produtos = [];
+    let tokenId = 1;
+    let falhasConsecutivas = 0;
+    const MAX_FALHAS_CONSECUTIVAS = 5; // Mais tolerância
+
+    while (falhasConsecutivas < MAX_FALHAS_CONSECUTIVAS && tokenId <= 100) {
+      try {
+        const produto = await contract.getProduto(tokenId);
+
+        if (produto.nome && produto.nome !== "") {
+          produtos.push({
+            id: tokenId,
             nome: produto.nome,
-            tipo: produto.tipoProduto,
-            precoOriginal: produto.precoPorKg ? produto.precoPorKg.toString() : 'N/A',
-            precoFormatado: formatarPreco(produto.precoPorKg),
-            quantidadeOriginal: produto.quantidadeKg ? produto.quantidadeKg.toString() : 'N/A',
-            quantidadeFormatada: formatarQuantidade(produto.quantidadeKg),
+            tipoProduto: produto.tipoProduto,
+            precoPorKg: produto.precoPorToken, // mesmo nome do seu contrato
+            quantidadeKg: produto.marktcap, // mesmo nome do seu contrato
             produtor: produto.produtor
           });
-          
-          // Verificar se o produto é válido (não vazio)
-          if (produto.nome !== "") {
-            console.log(`Produto ${tokenId} encontrado: ${produto.nome}`);
-            produtos.push({
-              nome: produto.nome,
-              tipoProduto: produto.tipoProduto,
-              precoPorKg: produto.precoPorKg,
-              quantidadeKg: produto.quantidadeKg,
-              produtor: produto.produtor,
-              id: tokenId
-            });
-            falhasConsecutivas = 0; // Resetar contador se encontrar um produto
-          } else {
-            falhasConsecutivas++;
-          }
-          
-          tokenId++;
-        } catch (error) {
+
+          falhasConsecutivas = 0;
+        } else {
           falhasConsecutivas++;
-          tokenId++;
         }
+
+        tokenId++;
+      } catch (error) {
+        falhasConsecutivas++;
+        tokenId++;
       }
-      
-      console.log(`Total de produtos encontrados: ${produtos.length}`);
-      
-      // Se a UI não precisa ser atualizada, retornar apenas a lista
-      if (!updateUI) {
-        return produtos;
-      }
-      
-      // Atualizar a UI
-      const container = document.getElementById("produtosGrid");
-      if (!container) return produtos;
-      
-      container.innerHTML = "";
-  
-      if (produtos.length === 0) {
-        container.innerHTML = "<p class='no-produtos'>Nenhum produto disponível no momento.</p>";
-        return produtos;
-      }
-  
-      produtos.forEach((produto) => {
-        // Verificar se o produto tem quantidade disponível
-        let quantidadeFormatada = formatarQuantidade(produto.quantidadeKg);
-        let precoFormatado = formatarPreco(produto.precoPorKg);
-        
-        console.log(`Produto ${produto.id} ao renderizar:`, {
-          nome: produto.nome,
-          precoFormatado: precoFormatado,
-          quantidadeFormatada: quantidadeFormatada
-        });
-        
-        if (parseInt(quantidadeFormatada) > 0) {
-          const card = document.createElement("div");
-          card.className = "produto-card";
-  
-          card.innerHTML = `
-            <img src="${getImagemPorTipo(produto.tipoProduto)}" alt="${produto.nome}" class="produto-img" onerror="this.src='imagens/generico.jpg'" />
-            <h3>${produto.nome}</h3>
-            <p>Tipo: ${produto.tipoProduto}</p>
-            <p>Preço por kg: ${precoFormatado} ETH</p>
-            <p>Disponível: ${quantidadeFormatada} kg</p>
-            <input type="number" min="1" max="${quantidadeFormatada}" value="1" placeholder="Qtd (kg)" class="quantidade-input" id="quantidade-${produto.id}" />
-            <button class="botao-comprar" onclick="comprarAtivo(${produto.id}, document.getElementById('quantidade-${produto.id}').value)">Comprar</button>
-          `;
-  
-          container.appendChild(card);
-        }
-      });
-      
-      return produtos;
-    } catch (error) {
-      console.error("Erro ao carregar produtos:", error);
-      
-      // Mostrar mensagem de erro para o usuário
-      const container = document.getElementById("produtosGrid");
-      if (container && updateUI) {
-        container.innerHTML = `
-          <div class="error-message">
-            <p>Ocorreu um erro ao carregar os produtos.</p>
-            <button onclick="carregarProdutos()">Tentar Novamente</button>
-          </div>
-        `;
-      }
-      
-      return [];
     }
+
+    if (!updateUI) return produtos;
+
+    const container = document.getElementById("produtosGrid");
+    if (!container) return produtos;
+
+    container.innerHTML = "";
+
+    if (produtos.length === 0) {
+      container.innerHTML = "<p class='no-produtos'>Nenhum produto disponível no momento.</p>";
+      return produtos;
+    }
+
+    produtos.forEach((produto) => {
+      const quantidade = formatarQuantidade(produto.quantidadeKg);
+      const preco = formatarPreco(produto.precoPorKg);
+
+      if (parseInt(quantidade) > 0) {
+        const card = document.createElement("div");
+        card.className = "produto-card";
+
+        card.innerHTML = `
+          <img src="${getImagemPorTipo(produto.tipoProduto)}" alt="${produto.nome}" class="produto-img" onerror="this.src='imagens/generico.jpg'" />
+          <h3>${produto.nome}</h3>
+          <p>Tipo: ${produto.tipoProduto}</p>
+          <p>Preço por token: ${preco} ETH</p>
+          <p>Disponível: ${quantidade} tokens</p>
+          <input type="number" min="1" max="${quantidade}" value="1" placeholder="Qtd" class="quantidade-input" id="quantidade-${produto.id}" />
+          <button class="botao-comprar" onclick="comprarAtivo(${produto.id}, document.getElementById('quantidade-${produto.id}').value)">Comprar</button>
+        `;
+
+        container.appendChild(card);
+      }
+    });
+
+    return produtos;
+  } catch (error) {
+    console.error("Erro ao carregar produtos:", error);
+
+    const container = document.getElementById("produtosGrid");
+    if (container && updateUI) {
+      container.innerHTML = `
+        <div class="error-message">
+          <p>Ocorreu um erro ao carregar os produtos.</p>
+          <button onclick="carregarProdutos()">Tentar Novamente</button>
+        </div>
+      `;
+    }
+
+    return [];
   }
+}
 
 async function carregarProdutos() {
     return await carregarTodosProdutos(true);
