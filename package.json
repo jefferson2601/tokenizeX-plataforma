@@ -1,26 +1,24 @@
 {
-    "name": "tokenizex1155",
-    "version": "1.0.0",
-    "description": "Sistema de tokenização de ativos agrícolas usando ERC1155",
-    "main": "index.js",
-    "scripts": {
-        "test": "forge test",
-        "build": "forge build",
-        "deploy:sepolia": "forge script script/TokenizeX1155.s.sol:DeployTokenizeX1155 --rpc-url sepolia --broadcast --verify -vvvv",
-        "verify:sepolia": "forge verify-contract --chain-id 11155111 --watch --compiler-version 0.8.19 ADDRESS TokenizeX1155"
-    },
-    "author": "",
-    "license": "MIT",
-    "devDependencies": {
-        "@nomiclabs/hardhat-ethers": "^2.2.3",
-        "@nomiclabs/hardhat-etherscan": "^3.1.8",
-        "@nomiclabs/hardhat-waffle": "^2.0.6",
-        "@openzeppelin/contracts": "^5.3.0",
-        "chai": "^4.3.7",
-        "dotenv": "^16.5.0",
-        "ethers": "^5.8.0",
-        "hardhat": "^2.24.0",
-        "hardhat-console": "^1.0.0"
-    },
-    "keywords": []
+  "name": "tokenizex1155",
+  "version": "1.0.0",
+  "description": "Sistema de tokenização de ativos agrícolas usando ERC1155",
+  "main": "index.html",
+  "scripts": {
+    "test": "npx hardhat test",
+    "compile": "npx hardhat compile",
+    "deploy:sepolia": "npx hardhat run scripts/deploy.js --network sepolia"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/contracts": "^5.3.0",
+    "chai": "^4.3.7",
+    "dotenv": "^16.5.0",
+    "ethers": "^5.8.0",
+    "hardhat": "^2.24.0"
+  },
+  "dependencies": {}
 }
