@@ -1210,12 +1210,13 @@ async function carregarTodosProdutos(updateUI = true) {
         const produto = await contract.getProduto(tokenId);
 
         if (produto.nome && produto.nome !== "") {
+          // Mapeando nomes do contrato para nomes no frontend
           produtos.push({
             id: tokenId,
             nome: produto.nome,
             tipoProduto: produto.tipoProduto,
-            precoPorKg: produto.precoPorToken, // mesmo nome do seu contrato
-            quantidadeKg: produto.marktcap, // mesmo nome do seu contrato
+            precoPorToken: produto.precoPorToken, // Nome consistente com o contrato
+            quantidadeTokens: produto.marktcap, // Nome mais claro para frontend
             produtor: produto.produtor
           });
 
@@ -1244,8 +1245,8 @@ async function carregarTodosProdutos(updateUI = true) {
     }
 
     produtos.forEach((produto) => {
-      const quantidade = formatarQuantidade(produto.quantidadeKg);
-      const preco = formatarPreco(produto.precoPorKg);
+      const quantidade = formatarQuantidade(produto.quantidadeTokens);
+      const preco = formatarPreco(produto.precoPorToken);
 
       if (parseInt(quantidade) > 0) {
         const card = document.createElement("div");
@@ -1284,8 +1285,8 @@ async function carregarTodosProdutos(updateUI = true) {
 }
 
 async function carregarProdutos() {
-    return await carregarTodosProdutos(true);
-  }
+  return await carregarTodosProdutos(true);
+}
 // Função para comprar um ativo
 async function comprarAtivo(tokenId, quantidadeKg) {
   if (!contract || !signer) {
@@ -1303,19 +1304,19 @@ async function comprarAtivo(tokenId, quantidadeKg) {
     console.log(`Tentando comprar produto ${tokenId}, quantidade: ${quantidade}`);
     
     // Obter produto para calcular valor total
-    const produto = await contract.produtos(tokenId);
+    const produto = await contract.getProduto(tokenId);
     console.log("Produto a ser comprado:", produto);
     
-    if (!produto || !produto.precoPorKg) {
+    if (!produto || !produto.precoPorToken) {
       alert("Produto não encontrado.");
       return;
     }
     
-    const total = produto.precoPorKg.mul(quantidade);
+    const total = produto.precoPorToken.mul(quantidade);
     console.log("Valor total da compra:", ethers.utils.formatEther(total), "ETH");
     
     // Executar transação de compra
-    alert(`Confirmando compra de ${quantidade}kg de ${produto.nome} por ${ethers.utils.formatEther(total)} ETH`);
+    alert(`Confirmando compra de ${quantidade} tokens de ${produto.nome} por ${ethers.utils.formatEther(total)} ETH`);
     const tx = await contract.comprarAtivo(tokenId, quantidade, { value: total });
     
     console.log("Compra enviada:", tx.hash);
